@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Features" %}{% endblock title %}
+
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<span class="display-4">{% trans 'Vote on features' %}</span>
+			<i class="far fa-thumbs-up fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+
+			<h5 class="card-title pb-5">
+				{% trans 'Have an idea for a feature?  ...Email it to ' %}<a href="mailto: {{ SITE_SUPPORT_EMAIL }}">{{ SITE_SUPPORT_EMAIL }}</a>
+			</h5>
+			
+			{% include 'features/datatable.html' with teams=teams %}
+
+		</div>
+  	</div>
+{% endblock content %}
+
+
+
+

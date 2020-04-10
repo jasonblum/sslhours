@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+{% load i18n static sslhours sekizai_tags %}
+
+{% block content %} 
+
+<div class="jumbotron">
+	<h1 class="display-2">{% trans "Welcome to <i class='far fa-clock'></i>SSLHours!" %}</h1>
+	<p class="lead">
+		{{ stats }}
+	</p>
+</div>
+
+<div class="card-deck">
+	<div class="card border-danger">
+		<h5 class="card-header"><a href="{% url 'students:list' %}">{% trans "Students" %}</a> {% trans "Leaderboard" %}!
+			{% if user.student %}
+				<a href="{% url 'students:snapshot' 'students' %}">
+					<i class="fas fa-graduation-cap float-right"></i>
+				</a>
+			{% else %}
+				<i class="fas fa-graduation-cap float-right text-dark"></i>
+			{% endif %}
+		</h5>
+		<div class="card-body">
+		    <h5 class="card-title">2019/2020 {% trans "Schoolyear" %}:</h5>
+			<ol>
+				{% for student in students %}
+				
+					<li>
+						<img src="{% static 'shared/images/avatars' %}/{{ student.avatar }}" width="30" class="rounded-circle">
+						{{ student.hyperlinked_name }}:
+						{{ student.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+			<hr/>
+		    <h5 class="card-title">{% trans "All-time" %}:</h5>
+			<ol>
+				{% for student in students %}
+					<li>
+						<img src="{% static 'shared/images/avatars' %}/{{ student.avatar }}" width="30" class="rounded-circle">
+						{{ student.hyperlinked_name }}:
+						{{ student.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+		</div>
+	</div>
+	<div class="card border-warning">
+		<h5 class="card-header">
+			<a href="{% url 'schools:list' %}">{% trans "Middle Schools" %}</a> {% trans "Leaderboard" %}!
+			{% if user.student %}
+				<a href="{% url 'students:snapshot' 'middle_schools' %}">
+					<i class="fas fa-school float-right"></i>
+				</a>
+			{% else %}
+				<i class="fas fa-school float-right text-dark"></i>
+			{% endif %}		</h5>
+		<div class="card-body">
+		    <h5 class="card-title">2019/2020 {% trans "Schoolyear" %}:</h5>
+			<ol>
+				{% for school in middle_schools %}
+					<li>
+						{{ school.hyperlinked_name }}:
+						{{ school.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+			<hr/>
+		    <h5 class="card-title">{% trans "All-time" %}:</h5>
+			<ol>
+				{% for school in middle_schools %}
+					<li>
+						{{ school.hyperlinked_name }}:
+						{{ school.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+		</div>
+	</div>
+	<div class="card border-info">
+		<h5 class="card-header"><a href="{% url 'schools:list' %}">{% trans "High Schools" %}</a> {% trans "Leaderboard" %}!
+			{% if user.student %}
+				<a href="{% url 'students:snapshot' 'high_schools' %}">
+					<i class="fas fa-school float-right"></i>
+				</a>
+			{% else %}
+				<i class="fas fa-school float-right text-dark"></i>
+			{% endif %}		</h5>
+		<div class="card-body">
+		    <h5 class="card-title">2019/2020 {% trans "Schoolyear" %}:</h5>
+			<ol>
+				{% for school in high_schools %}
+					<li>
+						{{ school.hyperlinked_name }}:
+						{{ school.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+			<hr/>
+		    <h5 class="card-title">{% trans "All-time" %}:</h5>
+			<ol>
+				{% for school in high_schools %}
+					<li>
+						{{ school.hyperlinked_name }}:
+						{{ school.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+		</div>
+	</div>
+</div>
+
+
+<p/>
+
+
+<div class="card-deck">
+	<div class="card border-success">
+		<h5 class="card-header"><a href="{% url 'teams:list' %}">{% trans "Teams" %}</a> {% trans "Leaderboard" %}!
+			{% if user.student %}
+				<a href="{% url 'students:snapshot' 'teams' %}">
+					<i class="fas fa-bullhorn float-right"></i>
+				</a>
+			{% else %}
+				<i class="fas fa-bullhorn float-right text-dark"></i>
+			{% endif %}
+		</h5>
+		<div class="card-body">
+		    <h5 class="card-title">2019/2020 {% trans "Schoolyear" %}:</h5>
+			<ol>
+				{% for team in teams %}
+					<li>
+						{{ team.hyperlinked_name }}:
+						{{ team.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+			<hr/>
+		    <h5 class="card-title">{% trans "All-time" %}:</h5>
+			<ol>
+				{% for team in teams %}
+					<li>
+						{{ team.hyperlinked_name }}:
+						{{ team.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+		</div>
+	</div>
+	<div class="card">
+		<h5 class="card-header"><a href="{% url 'activities:list' %}">{% trans "Activities" %}</a> {% trans "Leaderboard" %}!
+			{% if user.student %}
+				<a href="{% url 'students:snapshot' 'activities' %}">
+					<i class="fas fa-user-friends float-right"></i>
+				</a>
+			{% else %}
+				<i class="fas fa-user-friends float-right text-dark"></i>
+			{% endif %}
+		</h5>
+		<div class="card-body">
+		    <h5 class="card-title">2019/2020 {% trans "Schoolyear" %}:</h5>
+			<ol>
+				{% for activity in activities %}
+					<li>
+						{{ activity.hyperlinked_name }}:
+						{{ activity.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+			<hr/>
+		    <h5 class="card-title">{% trans "All-time" %}:</h5>
+			<ol>
+				{% for activity in activities %}
+					<li>
+						{{ activity.hyperlinked_name }}:
+						{{ activity.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+		</div>
+	</div>
+	<div class="card border-dark">
+		<h5 class="card-header"><a href="{% url 'organizations:list' %}">{% trans "Organizations" %}</a> {% trans "Leaderboard" %}!
+			{% if user.student %}
+				<a href="{% url 'students:snapshot' 'organizations' %}">
+					<i class="fas fa-sitemap float-right"></i>
+				</a>
+			{% else %}
+				<i class="fas fa-sitemap float-right text-dark"></i>
+			{% endif %}
+		</h5>
+		<div class="card-body">
+		    <h5 class="card-title">2019/2020 {% trans "Schoolyear" %}:</h5>
+			<ol>
+				{% for organization in organizations %}
+				
+					<li>
+						{{ organization.hyperlinked_name }}:
+						{{ organization.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+			<hr/>
+		    <h5 class="card-title">{% trans "All-time" %}:</h5>
+			<ol>
+				{% for organization in organizations %}
+					<li>
+						{{ organization.hyperlinked_name }}:
+						{{ organization.total_servicehours }}
+						{{ forloop.counter|leaderboard_position_html }}
+					</li>
+				{% endfor %}
+			</ol>
+		</div>
+	</div>
+</div>
+
+
+	{% addtoblock "js" %}
+	    <script type="text/javascript">
+	        $( document ).ready(function() {
+				var count = -1;
+				function HighlightButtons() {
+					var buttons = $('.highlight');
+					var buttonsLength = buttons.length - 1;
+					//Check if the actual item isn't more than the length then add 1 otherway restart to 0
+					count < buttonsLength ? count++ : count=0;
+					//Remove the class and add it to the new target
+					buttons.removeClass('active').eq(count).addClass('active');
+				}
+				setInterval(HighlightButtons, 2000);
+	        });
+	    </script>
+	{% endaddtoblock %}
+
+
+
+{% endblock content %}
+

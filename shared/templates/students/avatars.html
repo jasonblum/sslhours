@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Students" %}{% endblock title %}
+
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<span class="display-4">{% trans 'Select an avatar' %}</span>
+			<i class="fas fa-user-astronaut fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+
+			{% for avatar in avatars %}
+				<a href="{% url 'students:select_avatar' avatar %}">
+					<img src="{% static 'shared/images/avatars' %}/{{ avatar }}" width="100" class='border border-success m-2'>
+				</a>
+			{% endfor %}
+
+		</div>
+	</div>
+{% endblock content %}

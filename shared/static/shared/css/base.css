@@ -1,0 +1,16 @@
+
+.display-5 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+.btn-hg {
+    padding: 1rem;
+    font-size: 10rem;
+    border-radius: 0.3rem;
+}
+
+.jumbotron {
+    padding: 2rem 2rem;
+}

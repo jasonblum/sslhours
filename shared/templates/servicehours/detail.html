@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags i18n sslhours %}
+
+
+{% block content %} 
+
+	<div class="card">
+		<div class="card-header">
+			<span class="display-5">{% trans 'Servicehour' %}</span>
+			{% if can_manage and servicehour.status != 'credited' %}
+				<a href="{% url 'servicehours:edit' servicehour.pk %}" class="btn btn-outline-success btn-lg float-right" >{% trans 'Edit' %}</a>
+			{% endif %}
+		</div>
+		<div class="card-body">
+			<p class="card-text">
+
+				<ul>
+					<li>{% trans 'Student' %}: {{ servicehour.student.hyperlinked_name }}</li>
+					<li>{% trans 'Activity' %}: {{ servicehour.activity.hyperlinked_name }}</li>
+					<li>{% trans 'Organization' %}: {{ servicehour.activity.organization.hyperlinked_name }}</li>
+					<li>{% trans 'School' %}: {{ servicehour.student.school.hyperlinked_name }}</li>
+					<li>{% trans 'Team' %}: {{ servicehour.team.hyperlinked_name }}</li>
+					<li>{% trans 'Start Time' %}: {{ servicehour.start_time }}</li>
+					<li>{% trans 'End Time' %}: {{ servicehour.end_time }}</li>
+					<li>{% trans 'Total' %}: {{ servicehour.total }}</li>
+					<li>
+						{% trans 'Status' %}: {{ servicehour.status|status_html }}
+						{% if servicehour.status == 'incomplete' %}
+							{% trans '(Needs Reflections text.)' %}
+						{% endif %}
+					</li>
+					{% if servicehour.crediting_SSL_coordinator and servicehour.status != 'credited' %}
+						<li>{% trans 'Crediting SSL Coordinator' %}: {{ hour.crediting_SSL_coordinator.hyperlinked_name }}</li>
+					{% endif %}
+				{% if can_manage %}
+					<li>{% trans 'Reflections' %}: 
+						<div class="card">
+							<div class="card-body">
+								{{ servicehour.reflections }}
+							</div>
+						</div>
+					</li>
+					{% if servicehour.comments.exists %}
+						<li>Comments:
+							<ul>
+								{% for comment in servicehour.comments.all %}
+									<li>{{ comment.author.hyperlinked_name }} ({{ comment.dt_created }}): "{{ comment.comment }}"</li>
+								{% endfor %}
+							</ul>
+						</li>
+					{% endif %}
+				{% endif %}
+				</ul>
+			</div>
+		</div>
+
+{% endblock content %}

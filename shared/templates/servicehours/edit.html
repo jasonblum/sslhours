@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags i18n static %}
+
+
+{% block content %} 
+
+	<div class="card">
+		<div class="card-header">
+			<span class="display-4">{% trans 'Service Hour: Reflections' %}</span>
+			<i class="fas fa-pencil-alt fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+			<p class="card-text">
+
+				<div class="row align-items-center">
+					<div class="col-2 text-right">
+						<i class="far fa-comment-dots fa-4x text-dark"></i><br/>
+						<img src="{% static 'shared/images/avatars' %}/{{ servicehour.student.avatar }}" width="100" class="rounded mx-auto d-block">
+					</div>
+					<div class="col">
+						<div class="card bg-light">
+							<div class="card-body">
+								<p class="card-text">
+									Think about your SSL activity.
+									Review the <a href="www.montgomeryschoolsmd.org/departments/ssl/pages/bestpractices.aspx">Maryland Seven Best Practices of Service-Learning</a> and respond to the following questions in a written paragraph below,
+									or attach a separate document with your reflection:
+									<ul>
+										<li>What did you do?</li>
+										<li>What need did your service address?</li>
+										<li>Who benefitted from your service?</li>
+										<li>What did you learn about yourself?</li>
+										<li>How was this experience connected to something you learned in a class at school? (For example, English, Mathematics, Science, Social Studies, Arts,
+									Physical Education, Health, Foreign Language, etc.)</li>
+									</ul>
+									Note: This reflection will be reviewed by the MCPS SSL coordinator and returned to the student if incomplete. 
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<form action="" method="post">
+					{% csrf_token %}
+					{{ servicehour_form|crispy }}
+					{{ comment_form|crispy }}
+					<button class="btn btn-outline-success ml-2" type="submit">Update</button>
+					{% if can_credit %}
+						<button class="btn btn-outline-danger ml-2 float-right" type="submit" name="credit">Looks good!  Credit this SSL Hour</button>
+					{% endif %}
+				</form>
+			</p>
+		</div>
+	</div>
+
+
+
+{% endblock content %}

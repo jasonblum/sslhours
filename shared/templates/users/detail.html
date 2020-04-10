@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags i18n %}
+
+
+
+
+{% block content %} 
+
+
+	<div class="card">
+		<h5 class="card-header">{% trans 'Hi' %} {{ user.hyperlinked_name }}!</h5>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-sm">
+	  				<ul>
+						<li>{% trans 'First Name' %}: {{ user.first_name|default:'Unspecified' }}</li>
+						<li>{% trans 'Last Name' %}: {{ user.last_name|default:'Unspecified' }}</li>
+						<li>{% trans 'Email' %}: <a href="mailto:{{ user.email }}">{{ user.email }}</a></li>
+						<li>{% trans 'Date joined' %}: {{ user.date_joined }}</li>
+						{% if user.activities.exists %}
+							<li>{% trans 'Activities you manage:' %}:
+								<ul>
+									{% for activity in user.activities.all %}
+										<li>{{ activity.hyperlinked_name }}</li>
+									{% endfor %}
+								</ul>
+							</li>
+						{% endif %}
+						{% if user.organizations.exists %}
+							<li>{% trans 'Organizations you manage:' %}:
+								<ul>
+									{% for organization in user.organizations.all %}
+										<li>{{ organization.hyperlinked_name }}</li>
+									{% endfor %}
+								</ul>
+							</li>
+						{% endif %}
+						{% if user.ssl_coordinated_schools.exists %}
+							<li>{% trans 'Schools for which you are an SSL Coordinator:' %}:
+								<ul>
+									{% for school in user.ssl_coordinated_schools.all %}
+										<li>{{ school.hyperlinked_name }}</li>
+									{% endfor %}
+								</ul>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</div>
+		{% if user.ssl_coordinated_schools.exists %}
+			<div class="card-body">
+
+				{% include 'servicehours/datatable.html' with servicehours=coordinated_servicehours %}
+
+			</div>
+		{% endif %}
+	</div>
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% load static %}
+{% load sekizai_tags %}
+{% load i18n %}
+<!-- templates/base.html -->
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <link rel="shortcut icon" type="image/png" href="{% static 'shared/images/favicon.ico' %}"/>
+
+		{% include 'includes/base_css.html' %}
+
+		<title>{% block title %}SSLHours{% endblock title %}</title>
+	</head>
+	<body>
+		<header>
+
+			{% include 'includes/base_navigation.html' %}
+
+		</header>
+		<main role="main" class="container-fluid" style="width: 70%;">
+
+			{% include 'includes/base_messages.html' %}
+			{% block content %}{% endblock content %}
+
+		</main>
+
+		&nbsp;
+
+		{% include 'includes/base_footer.html' %}
+
+		{% include 'includes/base_javascript.html' %}
+
+		{% render_block "js" %}
+
+
+	</body>
+</html>

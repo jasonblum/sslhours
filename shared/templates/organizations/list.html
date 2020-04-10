@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Organizations" %}{% endblock title %}
+
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<span class="display-4">{% trans 'Organizations' %}</span>
+			<i class="fas fa-sitemap fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+
+			{% include 'organizations/datatable.html' with organizations=organizations %}
+
+		</div>
+	</div>
+{% endblock content %}

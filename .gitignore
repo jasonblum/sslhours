@@ -1,0 +1,45 @@
+#OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# SublimeText
+# cache files for sublime text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# workspace files are user-specific
+*.sublime-workspace
+
+# Pycharm
+.idea
+
+# Vim
+*~
+*.swp
+*.swo
+
+# virtual environments
+*.env*
+
+
+# python
+*.py[cod]
+*.pyc
+__pycache__
+
+# virtual environments
+/.vagrant
+/webster_cms/media/*
+
+logserror.log
+
+*.lock
+*.log
+*.log.*
+*.sqlite3
+*.bak
+build/
+src/
+media/*

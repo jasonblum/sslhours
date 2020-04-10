@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load static %}
+{% load sslhours %}
+
+<p/>
+<table id="datatable_id" class="display datatable">
+    <thead>
+        <tr>
+            <th>{% trans "Position" %}</th>
+            <th>{% trans "Username" %}</th>
+            <th>{% trans "SSL Credited" %}</th>
+            <th>{% trans "Grade" %}</th>
+            <th>{% trans "School" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    	{% for student in students %}
+	        <tr>
+				<td>{{ forloop.counter }}</td>
+				<td>
+                    <img src="{% static 'shared/images/avatars' %}/{{ student.avatar }}" width="25" class="rounded-circle">
+                    {{ student.hyperlinked_name }}
+                    {{ forloop.counter|leaderboard_position_html }}
+                    {% if student == user.student %}
+                        <a href="{% url 'students:snapshot' 'students' %}">
+                            <i class="fas fa-camera fa-2x float-right"></i>
+                        </a>
+                    {% endif %}
+                </td>
+                <td>{{ student.total_servicehours }}</td>
+				<td>{{ student.grade|default:'' }}</td>
+				<td>{{ student.school.hyperlinked_name }}</a></td>
+	        </tr>
+	    {% endfor %}
+    </tbody>
+</table>

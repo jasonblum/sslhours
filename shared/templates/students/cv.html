@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Student" %}: {{ student }}{% endblock title %}
+
+
+{% block content %} 
+
+	<div class="card">
+		<div class="card-header">
+			<span class="display-5">{% trans 'Public profile for: ' %}{{ student.hyperlinked_name }}</span>
+			{% if user == student.user %}
+				<a href="{% url 'students:edit' %}" class='float-right'>
+					<button type="button" class="btn btn-outline-success btn-lg">Manage</button>
+				</a>
+			{% endif %}
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-sm">
+					<p class="card-text">
+						Students in Montgomery County Public Schools in Maryland must complete 75 hours of community service to graduate.  Read more <a href="https://www.montgomeryschoolsmd.org/departments/ssl/">here</a>.
+					</p>
+					<p>
+						{{ SITE_NAME }} is a free service designed to streamline the process for reporting these SSL hours, and then aggregating them in the context of the "Leaderboards" you see on the home page.
+					</p>
+					<p>
+						This page is the public profile for the student whose username is {{ student.username }}.<br>
+						{{ student.username }} was initially credited with {{ student.beginning_total_servicehour_balance }} Service Hours earned prior to their use of {{ SITE_NAME }}.<br/>
+						And with the hours completed below, they have a total of {{ student.total_servicehours }}
+					</p>
+					<p>
+						This page is the public profile for the student whose username is {{ student.username }}.  And below you can review Service Hours completed by this student along with any snapshots they may have taken of positions they've held on leaderboards.
+					</p>
+				</div>
+				{% include 'includes/detail_badge.html' with object=student %}
+			</div>
+		</div>
+
+		{% if student.snapshots.exists %}
+			<div class="card-body">
+			<h4>{{ student.hyperlinked_name }}'s snapshots:</h4>
+
+				<table id="datatable_id" class="display datatable">
+				    <thead>
+				        <tr>
+				            <th>{% trans "Date Snapped" %}</th>
+				            <th>{% trans "Position" %}</th>
+				            <th>{% trans "Out of" %}</th>
+				            <th>{% trans "Leaderboard" %}</th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				    	{% for snapshot in student.snapshots.all %}
+					        <tr>
+					            <td>{{ snapshot.dt_created|date:'n/j/y' }}</td>
+					            <td>{{ snapshot.position }}</td>
+					            <td>{{ snapshot.out_of }}</td>
+					            <td><a href="/{{ snapshot.leaderboard }}">{{ snapshot.leaderboard }}</a></td>
+					        </tr>
+					    {% endfor %}
+				    </tbody>
+				</table>
+
+			</div>
+		{% endif %}
+
+		<hr/>
+		<div class="card-body">
+			<h4>{{ student.hyperlinked_name }}'s service hours:</h4>
+			{% include 'servicehours/datatable.html' with servicehours=student.servicehours.all %}
+		</div>
+
+	</div>
+
+
+{% endblock content %}

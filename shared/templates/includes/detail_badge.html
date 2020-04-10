@@ -1,0 +1,22 @@
+{% load i18n %}
+{% load static %}
+<div class="col-sm-3 text-center">
+
+	<div class="card border-success">
+		<div class="card-body">
+			{% if object.type == 'Student' %}
+				{% if request.user.student == object %}
+				<a href="{% url 'students:avatars' %}">
+					<img src="{% static 'shared/images/avatars' %}/{{ object.avatar }}" width="100" class="rounded mx-auto d-block border border-success">
+				</a>
+				{% else %}
+					<img src="{% static 'shared/images/avatars' %}/{{ object.avatar }}" width="100" class="rounded mx-auto d-block">
+				{% endif %}
+			{% endif %}
+			{{ object.hyperlinked_name}}<br/>
+			has 
+			<h1>{{ object.total_servicehours}}</h1>
+			{% trans 'credited Service Hours' %}!!!
+		</div>
+	</div>
+</div>

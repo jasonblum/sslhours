@@ -1,0 +1,25 @@
+406|Bethesda‑Chevy Chase, 4301 East-West Hwy., Bethesda 20814|240-740-0400
+757|Montgomery Blair, 51 University Blvd. East, Silver Spring 20901|301-649-2800
+321|James Hubert Blake, 300 Norwood Rd., Silver Spring 20905|240-740-1400
+602|Winston Churchill, 11300 Gainsborough Rd., Potomac 20854|240-740-5400
+249|Clarksburg, 22500 Wims Rd., Clarksburg 20871|240-740-6000
+701|Damascus, 25921 Ridge Rd., Damascus 20872|240-207-2400
+789|Albert Einstein, 11135 Newport Mill Rd., Kensington 20895|240-740-2700
+551|Gaithersburg, 101 Education Boulevard, Gaithersburg 20877|301-284-4500
+424|Walter Johnson, 6400 Rock Spring Dr., Bethesda 20814|301-803-7100
+815|John F. Kennedy, 1901 Randolph Rd., Silver Spring 20902|240-740-0100
+510|Col. Zadok Magruder, 5939 Muncaster Mill Rd., Rockville 20855|240-740-5550
+201|Richard Montgomery, 250 Richard Montgomery Dr., Rockville 20852|240-740-6100
+246|Northwest, 13501 Richter Farm Rd., Germantown 20874|301-601-4660
+796|Northwood, 919 University Blvd. West, Silver Spring 20901|301-649-8088
+315|Paint Branch, 14121 Old Columbia Pike, Burtonsville 20866|301-388-9900
+152|Poolesville, 17501 West Willard Rd., Poolesville 20837|240-740-2400
+125|Quince Orchard, 15800 Quince Orchard Rd., Gaithersburg 20878|240-740-3600
+230|Rockville, 2100 Baltimore Rd., Rockville 20851|301-517-8105
+104|Seneca Valley, 19401 Crystal Rock Dr., Germantown 20874|301-353-8000
+503|Sherwood, 300 Olney-Sandy Spring Rd., Sandy Spring 20860|301-924-3200
+798|Springbrook, 201 Valleybrook Dr., Silver Spring 20904|240-740-3800
+545|Watkins Mill, 10301 Apple Ridge Rd., Gaithersburg 20879|301-284-4400
+782|Wheaton, 12401 Dalewood Dr., Silver Spring 20906|301-321-3400
+427|Walt Whitman, 7100 Whittier Blvd., Bethesda 20817|240-740-4800
+234|Thomas S. Wootton, 2100 Wootton Pkwy., Rockville 20850|240-740-1500|ds|d|

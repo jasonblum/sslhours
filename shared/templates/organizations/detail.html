@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Team" %}: {{ team }}{% endblock title %}
+
+{% block content %} 
+	<div class="card">
+		<div class="card-header">
+			<span class="display-5">{% trans 'Organization' %}: {{ organization.hyperlinked_name }}</span>
+			<i class="fas fa-sitemap fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-sm">
+					<p class="card-text">
+						<ul>
+							<li>{% trans 'EIN' %}: {{ organization.ein }}</li>
+							<li>{% trans 'Phone' %}: {{ organization.phone }}</li>
+							<li>{% trans 'Email' %}: <a href="mailto:{{ organization.email }}">{{ organization.email }}</a></li>
+							<li>{% trans 'Address' %}: {{ organization.address }};
+								{{ organization.city }}, {{ organization.state }} {{ organization.zip_code }}
+							</li>
+							<li>{% trans 'Description' %}: {{ organization.description }}</li>
+							<li>{% trans 'Manager' %}: {{ organization.manager.hyperlinked_name }}</li>
+						</ul>
+					</p>
+				</div>
+				{% include 'includes/detail_badge.html' with object=organization %}
+			</div>
+		</div>
+	</div>
+
+
+
+	<p/>
+
+	<div class="card">
+		<h5 class="card-header">{% trans 'Activities sponsored by' %} {{ organization.hyperlinked_name }}:</h5>
+		<div class="card-body">
+
+			{% include 'activities/datatable.html' with activities=organization.activities.all %}
+
+		</div>
+	</div>
+
+
+{% endblock content %}

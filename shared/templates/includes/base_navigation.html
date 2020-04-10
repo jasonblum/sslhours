@@ -1,0 +1,108 @@
+{% load static %}
+{% load i18n %}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+	<button type="button" class="btn btn-lg btn-light">
+		<a href="{% url 'home' %}"><i class='far fa-clock'></i>SSLHours</a>
+	</button>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+		<ul class="navbar-nav ml-auto">
+
+			<li class="nav-item">
+				<a class="nav-link dropdown-toggle" href="#" id="leaderboardMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fa fa-clock"></i>
+					Leaderboards
+				</a>
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="leaderboardMenu">
+					<a class="dropdown-item" href="{% url 'students:list' %}">
+						<i class="fas fa-graduation-cap"></i>
+						{% trans "Students" %}
+					</a>
+					<a class="dropdown-item" href="{% url 'servicehours:list' %}">
+						<i class="far fa-clock"></i>
+						{% trans "Service Hours" %}
+					</a>
+					<a class="dropdown-item" href="{% url 'organizations:list' %}">
+						<i class="fas fa-sitemap"></i>
+						{% trans "Organizations" %}
+					</a>
+					<a class="dropdown-item" href="{% url 'activities:list' %}">
+						<i class="fas fa-user-friends"></i>
+						{% trans "Activities" %}
+					</a>
+					<a class="dropdown-item" href="{% url 'teams:list' %}">
+						<i class="fas fa-bullhorn"></i>
+						{% trans "Teams" %}
+					</a>
+					<a class="dropdown-item" href="{% url 'schools:list' %}">
+						<i class="fas fa-school"></i>
+						{% trans "Schools" %}
+					</a>
+				</div>
+			</li>
+
+
+
+			{% if user.is_authenticated %}
+				<li class="nav-item">
+					<a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-user-alt"></i>
+						{{ user.username }}
+					</a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+						{% if user.is_superuser %}
+							<a class="dropdown-item" href="{% url 'admin:index' %}">Django Admin</a>
+						{% endif %}
+						{% if user.is_superuser %}
+							<a class="dropdown-item" href="/rosetta">Rosetta</a>
+						{% endif %}
+						{% if user.student %}
+							<a class="dropdown-item" href="{% url 'student_cv' user.student.username %}"> {% trans "Student Profile" %}</a>
+						{% else %}
+						<a class="dropdown-item" href="{% url 'users:detail' user.pk %}"> {% trans "User Profile" %}</a>
+						<a class="dropdown-item" href="{% url 'students:claim' %}"> {% trans "Claim your MCPS Student ID" %}</a>
+						{% endif %}
+						<a class="dropdown-item" href="{% url 'help' %}"><i class="fas fa-question-circle"></i> {% trans "Help" %}</a>
+						<a class="dropdown-item" href="{% url 'privacy' %}"><i class="fas fa-user-lock"></i> {% trans "Privacy" %}</a>
+
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i>{% trans "Log out" %}</a>
+					</div>
+				</li>
+			{% else %}
+				<li class="nav-item {% if '/faq/' in request.path %}active{% endif %}">
+					<form class="form-inline ml-auto">
+						<a href="{% url 'account_login' %}" class="btn btn-primary"> {% trans "Log in" %}</a>
+					</form>
+				</li>
+			{% endif %}
+
+
+
+		<form id="select_language_form" action="{% url 'set_language' %}" method="post">
+			{% csrf_token %}
+			<input name="next" type="hidden" value="{{ redirect_to }}">
+
+			<li class="nav-item ml-2">
+				<select name="language" id="select_language" class="form-control form-control-sm text-success">
+					{% get_current_language as LANGUAGE_CODE %}
+					{% get_available_languages as LANGUAGES %}
+					{% get_language_info_list for LANGUAGES as languages %}
+					{% for language in languages %}
+						<option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+							{{ language.name_local }} ({{ language.code }})
+						</option>
+					{% endfor %}
+				</select>
+			</li>
+		</form>
+
+
+
+		</ul>
+	</div>
+</nav>

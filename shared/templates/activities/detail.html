@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load sekizai_tags crispy_forms_tags i18n sslhours %}
+
+
+{% block title %}{% trans "Activity" %}: {{ activity }}{% endblock title %}
+
+{% block content %} 
+
+	<div class="card">
+		<div class="card-header">
+			<span class="display-5">{% trans 'SSL Activity or Event' %}: {{ activity.hyperlinked_name }}</span>
+			<i class="fas fa-user-friends fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-sm">
+					<p class="card-text">
+						<ul>
+							<li>{% trans 'Name' %}: {{ activity.hyperlinked_name }}</li>
+							<li>{% trans 'Organization' %}: {{ activity.organization.hyperlinked_name }}</li>
+							<li>{% trans 'Description' %}: {{ activity.description }}</li>
+							<li>{% trans 'Managers' %}: {{ activity.managers_names_hyperlinked }}</li>
+						</ul>
+					</p>
+				</div>
+				{% include 'includes/detail_badge.html' with object=activity %}
+			</div>
+		</div>
+	</div>
+
+
+	<p/>
+
+{% if can_manage %}
+	<div class="card">
+		<h5 class="card-header">{% trans 'Check in a student for this activity:' %}</h5>
+		<div class="card-body">
+			<p class="card-text">
+				<form method="post" action="{% url 'activities:checkin' %}">
+					{% csrf_token %}
+					<input name="activity_pk" value="{{ activity.pk }}" type="hidden" />
+
+					<div class="form-row align-items-center">
+						<div class="col-sm-6">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<div class="input-group-text">MCPS ID#</div>
+								</div>
+								<input 
+									type="number" 
+									name="mcps_id" 
+									min="1" max="99999999" 
+									class="numberinput form-control" 
+									required id="id_mcps_id" 
+									placeholder="{% trans 'Please ask to see the student\'s ID card to confirm their ID...' %}"
+								>
+							</div>
+						</div>
+						<div class="col-auto">
+							<button class="btn btn-outline-success" type="submit">{% trans 'Check <strong>in</strong>' %}</button> 
+						</div>
+					</div>
+
+
+
+
+				</form>
+			</p>
+		</div>
+	</div>
+
+	<p/>
+
+	<div class="card">
+		<h5 class="card-header">{% trans 'Students Checked in or Out for this activity' %}:</h5>
+		<div class="card-body">
+			<table id="datatable_id" class="display datatable">
+			    <thead>
+			        <tr>
+			            <th>{% trans 'MCPS ID' %}</th>
+			            <th>{% trans 'Username' %}</th>
+			            <th>{% trans 'Checked IN' %}</th>
+			            <th>{% trans 'Checked OUT' %}</th>
+			            <th>{% trans 'Total Hours' %}</th>
+			            <th>{% trans 'Status' %}</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	{% for servicehour in servicehours %}
+				        <tr>
+				            <td>{{ servicehour.student.mcps_id }}</td>
+				            <td>{{ servicehour.student.user.username|default:'<i>unclaimed</i>' }}</td>
+				            <td>{{ servicehour.start_time }}</td>
+				            <td>
+				            	{% if servicehour.end_time %}
+				            		{{ servicehour.end_time }}
+				            	{% else %}
+				            		<a href="{% url 'activities:checkout' servicehour.pk %}">
+										<button type="button" class="btn btn-outline-success btn-sm">{% trans 'Check out!' %}</button>
+									</a>
+								{% endif %}
+				            </td>
+				            <td>
+			                    {% if not servicehour.end_time %}
+			                        <span id="timer{{ servicehour.pk }}"></span>
+			                    {% else %}
+			                        {{ servicehour.total }}
+			                    {% endif %}
+			                </td>
+			                <td>
+			                    {% if not servicehour.status == 'credited' and request.user in servicehour.users_who_can_manage %}
+			                        <a href="{% url 'servicehours:edit' servicehour.pk %}">
+			                            {{ servicehour.status|status_html }}
+			                        </a>
+			                    {% else %}
+			                        {{ servicehour.status|status_html }}
+			                    {% endif %}
+			                </td>
+				        </tr>
+				    {% endfor %}
+			    </tbody>
+			</table>
+		</div>
+	</div>
+
+	{% addtoblock "js" %}
+	    <script type="text/javascript">
+	        $( document ).ready(function() {
+	            {% for servicehour in servicehours %}
+	                {% if not servicehour.end_time %}
+	                    var m{{ servicehour.pk }} = moment.unix("{{ servicehour.start_time|date:'U' }}");
+
+	                    $('#timer{{ servicehour.pk }}').tinyTimer({
+	                        from: m{{ servicehour.pk }},
+	                        onTick: function (val) {
+	                            $('#timer{{ servicehour.pk }}').html( (val.S/60/60).toFixed(2) );
+	                            $("#timer{{ servicehour.pk }}").fadeOut(function() {
+	                                $(this).attr("class","text-danger").fadeIn();
+	                            });
+	                        }
+	                    });
+	                {% endif %}
+	            {% endfor %}
+	        });
+	    </script>
+	{% endaddtoblock %}
+
+{% endif %}
+
+
+
+
+{% endblock content %}

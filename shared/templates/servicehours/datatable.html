@@ -1,0 +1,76 @@
+{% load sekizai_tags i18n static sslhours %}
+
+<p/>
+<table id="datatable_id" class="display datatable">
+    <thead>
+        <tr>
+            <th>{% trans 'Student'%}</th>
+            <th>{% trans 'Activity'%}</th>
+            <th>{% trans 'School'%}</th>
+            <th>{% trans 'Team'%}</th>
+            <th>{% trans 'Date'%}</th>
+            <th>{% trans 'Total'%}</th>
+            <th>{% trans 'Status'%}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    	{% for servicehour in servicehours %}
+	        <tr>
+                <td>
+                    <img src="{% static 'shared/images/avatars' %}/{{ servicehour.student.avatar }}" width="25" class="rounded-circle">
+                    {{ servicehour.student.hyperlinked_name }}
+                </td>
+                <td>{{ servicehour.activity.hyperlinked_name }}</td>
+                <td>{{ servicehour.school.hyperlinked_name }}</td>
+                <td>{{ servicehour.team.hyperlinked_name }}</td>
+	            <td>{{ servicehour.start_time|date:'n/j/y' }}</td>
+	            <td>
+                    {% if not servicehour.end_time %}
+                        <span id="timer{{ servicehour.pk }}"></span>
+                    {% else %}
+                        {{ servicehour.total }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if request.user in servicehour.users_who_can_manage %}
+                        <a href="{% url 'servicehours:detail' servicehour.pk %}">
+                            {{ servicehour.status|status_html }}
+                        </a>
+                    {% else %}
+                        {{ servicehour.status|status_html }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if servicehour.status == 'pending' and request.user in servicehour.users_who_can_manage %}
+                    <a href="{% url 'servicehours:pdf' servicehour.pk %}" target="_blank">
+                        <i class="far fa-file-pdf fa-2x"></i>
+                    </a>
+                    {% endif %}
+                </td>
+	        </tr>
+	    {% endfor %}
+    </tbody>
+</table>
+
+
+{% addtoblock "js" %}
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            {% for servicehour in servicehours %}
+                {% if not servicehour.end_time %}
+                    var m{{ servicehour.pk }} = moment.unix("{{ servicehour.start_time|date:'U' }}");
+                    $('#timer{{ servicehour.pk }}').tinyTimer({
+                        from: m{{ servicehour.pk }},
+                        onTick: function (val) {
+                            $('#timer{{ servicehour.pk }}').html( (val.S/60/60).toFixed(2) );
+                            $('#timer{{ servicehour.pk }}').fadeOut(function() {
+                                $(this).attr('class', 'text-danger').fadeIn();
+                            });
+                        }
+                    });
+                {% endif %}
+            {% endfor %}
+        });
+    </script>
+{% endaddtoblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags i18n static %}
+
+{% block title %}{% trans "Student" %}: {{ student }}{% endblock title %}
+
+
+{% block content %} 
+
+	<div class="card">
+		<div class="card-header">
+			<span class="display-4">{% trans 'Manage your profile' %}</span>
+			<i class="fas fa-graduation-cap fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-sm">
+					<p class="card-text">
+						{% blocktrans %}
+							The information below is needed only if you want SSLHours.com to be able to generate the <a href="{{ URL_TO_OFFICIAL_SSL_PDF }}">MCPS SSL Form 560-51</a> for you to print to give to your school's SSL coordinator, or to skip the form altogether, and have your school's SSL Coordinator verify and credit your hours here.
+						{% endblocktrans %}
+					</p>
+					<p class="card-text">
+						{% blocktrans %}
+							If you only want forms generated with your hours, school and grade, then feel free to leave the other fields blank.
+						{% endblocktrans %}
+					</p>
+				</div>
+				{% include 'includes/detail_badge.html' with object=student %}
+			</div>
+			<hr/>
+
+			<form method="post">
+				{% csrf_token %}
+				{{ form|crispy }}
+				<button class="btn btn-success btn-lg" type="submit">Save!</button>
+			</form>
+
+		</div>
+	</div>
+
+{% endblock content %}

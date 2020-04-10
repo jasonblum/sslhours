@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Schools" %}{% endblock title %}
+
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<span class="display-4">{% trans 'Montgomery County Public Schools' %}</span>
+			<i class="fas fa-school fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+			{% include 'schools/datatable.html' with schools=schools %}
+		</div>
+	</div>
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load sekizai_tags i18n %}
+
+{% block title %}{% trans "Schools" %}{% endblock title %}
+
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<span class="display-4">{% trans 'Help' %}</span>
+			<i class="far fa-question-circle fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+
+			<div id="accordion">
+				{% for key, value in HELP_TEXT.items %}
+					<div class="card">
+						<div class="card-header" id="heading{{ forloop.counter }}">
+							<h5 class="mb-0">
+							<button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+							{{ key|safe }}
+							</button>
+							</h5>
+						</div>
+
+						<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-parent="#accordion">
+							<div class="card-body">
+							{{ value|safe }}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+	{% addtoblock "js" %}
+	    <script type="text/javascript">
+	        $( document ).ready(function() {
+	        	$('#collapse1').collapse('show');
+	        });
+	    </script>
+	{% endaddtoblock %}
+
+
+{% endblock content %}
+

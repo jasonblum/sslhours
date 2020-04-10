@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Schools" %}{% endblock title %}
+
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<span class="display-4">{% trans 'Student Service Learning Hours' %}</span>
+			<i class="far fa-clock fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+
+			{% include 'servicehours/datatable.html' with servicehours=servicehours %}
+
+		</div>
+	</div>
+{% endblock content %}
+

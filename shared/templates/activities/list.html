@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Activities" %}{% endblock title %}
+
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<span class="display-4">{% trans 'SSL Activities & Events' %}</span>
+			<i class="fas fa-bullhorn fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+
+			{% include 'activities/datatable.html' with activities=activities %}
+
+		</div>
+	</div>
+{% endblock content %}

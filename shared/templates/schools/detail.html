@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "School" %}: {{ school }}{% endblock title %}
+
+{% block content %} 
+	<div class="card">
+		<div class="card-header">
+			<span class="display-5">{% trans 'School' %}: {{ school.hyperlinked_name }}</span>
+			<i class="fas fa-school fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-sm">
+					<p class="card-text">
+						<ul>
+							<li>{% trans 'MCPS ID' %}: {{ school.mcps_school_id }}</li>
+							<li>{% trans 'Address' %}: {{ school.address }}</li>
+							<li>{% trans 'City' %}: {{ school.city }}</li>
+							<li>{% trans 'Zip' %}: {{ school.zip }}</li>
+							<li>{% trans 'Phone' %}: {{ school.phone }}</li>
+							<li>{% trans 'SSL Coordinators' %}: {{ school.ssl_coordinators_names_hyperlinked }}</li>
+						</ul>
+					</p>
+				</div>
+				{% include 'includes/detail_badge.html' with object=school %}
+			</div>
+		</div>
+		<hr/>
+		<div class="card-body">
+			<h4>Students at {{ school }}:</h4>
+			{% include 'students/datatable.html' with students=school.students.all %}
+		</div>
+	</div>
+{% endblock content %}

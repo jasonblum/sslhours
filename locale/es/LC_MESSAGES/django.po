@@ -1,0 +1,602 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-08 05:11-0400\n"
+"PO-Revision-Date: 2020-04-08 05:15-0456\n"
+"Last-Translator: b'Anonymous User <jason.blum@gmail.com>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.3\n"
+
+#: shared/templates/account/login.html:4 shared/templates/account/login.html:9
+#: shared/templates/account/login.html:50
+#, fuzzy
+#| msgid "Sign up"
+msgid "Sign In"
+msgstr "Regístrate"
+
+#: shared/templates/account/login.html:21
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"                            of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign up</a>\n"
+"                            for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: shared/templates/account/login.html:29
+msgid "or"
+msgstr ""
+
+#: shared/templates/account/login.html:36
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"                            <a href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+
+#: shared/templates/account/login.html:49
+msgid "Forgot Password?"
+msgstr ""
+
+#: shared/templates/account/logout.html:4
+#: shared/templates/account/logout.html:9
+#: shared/templates/account/logout.html:23
+#: shared/templates/account/signup.html:4
+#, fuzzy
+#| msgid "Sign up"
+msgid "Sign Out"
+msgstr "Regístrate"
+
+#: shared/templates/account/logout.html:16
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: shared/templates/account/signup.html:9
+#: shared/templates/account/signup.html:25
+#, fuzzy
+#| msgid "Sign up"
+msgid "Sign Up"
+msgstr "Regístrate"
+
+#: shared/templates/account/signup.html:17
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: shared/templates/activities/datatable.html:8
+#: shared/templates/grades/datatable.html:8
+#: shared/templates/organizations/datatable.html:8
+#: shared/templates/schools/datatable.html:8
+#: shared/templates/students/cv.html:42
+#: shared/templates/students/datatable.html:9
+#: shared/templates/teams/datatable.html:7
+msgid "Position"
+msgstr "Posición"
+
+#: shared/templates/activities/datatable.html:9
+#: shared/templates/activities/detail.html:19
+#: shared/templates/grades/datatable.html:9
+#: shared/templates/organizations/datatable.html:9
+#: shared/templates/schools/datatable.html:9
+#: shared/templates/teams/datatable.html:8
+msgid "Name"
+msgstr "Nombre"
+
+#: shared/templates/activities/datatable.html:10
+#: shared/templates/grades/datatable.html:10
+#: shared/templates/organizations/datatable.html:10
+#: shared/templates/schools/datatable.html:10
+#: shared/templates/students/datatable.html:11
+#: shared/templates/teams/datatable.html:9
+msgid "SSL Credited"
+msgstr ""
+
+#: shared/templates/activities/datatable.html:11
+#: shared/templates/activities/detail.html:20
+#: shared/templates/organizations/detail.html:9
+#: shared/templates/servicehours/detail.html:20
+#, fuzzy
+#| msgid "Organizations"
+msgid "Organization"
+msgstr "Organizaciones"
+
+#: shared/templates/activities/datatable.html:12
+#: shared/templates/organizations/datatable.html:11
+#: shared/templates/organizations/detail.html:24
+msgid "Manager"
+msgstr "Gerente"
+
+#: shared/templates/activities/detail.html:5
+#: shared/templates/servicehours/datatable.html:8
+#: shared/templates/servicehours/detail.html:19
+msgid "Activity"
+msgstr "Actividad"
+
+#: shared/templates/activities/detail.html:11
+#, fuzzy
+#| msgid "Activity"
+msgid "SSL Activity or Event"
+msgstr "Actividad"
+
+#: shared/templates/activities/detail.html:21
+#: shared/templates/organizations/detail.html:23
+#: shared/templates/teams/datatable.html:10
+#: shared/templates/teams/detail.html:17
+msgid "Description"
+msgstr "Descripción"
+
+#: shared/templates/activities/detail.html:22
+msgid "Managers"
+msgstr "Gerentes"
+
+#: shared/templates/activities/detail.html:36
+#, fuzzy
+#| msgid "Check in/out Students for this activity!"
+msgid "Check in a student for this activity:"
+msgstr "¡Registra/Echa un vistazo a los estudiantes para esta actividad!"
+
+#: shared/templates/activities/detail.html:55
+msgid "Please ask to see the student\\"
+msgstr ""
+
+#: shared/templates/activities/detail.html:60
+msgid "Check <strong>in</strong>"
+msgstr ""
+
+#: shared/templates/activities/detail.html:75
+msgid "Students Checked in or Out for this activity"
+msgstr "Estudiantes que ingresaron o salieron para esta actividad"
+
+#: shared/templates/activities/detail.html:80
+#: shared/templates/schools/detail.html:17
+msgid "MCPS ID"
+msgstr ""
+
+#: shared/templates/activities/detail.html:81
+#: shared/templates/students/datatable.html:10
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: shared/templates/activities/detail.html:82
+msgid "ID Claim Code"
+msgstr ""
+
+#: shared/templates/activities/detail.html:83
+msgid "Checked IN"
+msgstr ""
+
+#: shared/templates/activities/detail.html:84
+msgid "Checked OUT"
+msgstr ""
+
+#: shared/templates/activities/detail.html:85
+msgid "Total Hours"
+msgstr "Horas totales"
+
+#: shared/templates/activities/detail.html:86
+#: shared/templates/features/datatable.html:9
+#: shared/templates/servicehours/datatable.html:13
+#: shared/templates/servicehours/detail.html:26
+msgid "Status"
+msgstr "Estado"
+
+#: shared/templates/activities/detail.html:101
+msgid "Check out!"
+msgstr ""
+
+#: shared/templates/activities/list.html:4 shared/templates/home.html:145
+#: shared/templates/includes/base_navigation.html:43
+msgid "Activities"
+msgstr "actividad"
+
+#: shared/templates/activities/list.html:9
+#, fuzzy
+#| msgid "Activity"
+msgid "SSL Activities & Events"
+msgstr "Actividad"
+
+#: shared/templates/features/datatable.html:7
+msgid "Tally"
+msgstr ""
+
+#: shared/templates/features/datatable.html:8
+msgid "Feature"
+msgstr ""
+
+#: shared/templates/features/datatable.html:10
+msgid "Vote up or down"
+msgstr ""
+
+#: shared/templates/features/list.html:4
+msgid "Features"
+msgstr ""
+
+#: shared/templates/features/list.html:9
+#: shared/templates/includes/base_navigation.html:15
+msgid "Vote on features"
+msgstr ""
+
+#: shared/templates/features/list.html:15
+msgid "Have an idea for a feature?  ...Email it to "
+msgstr ""
+
+#: shared/templates/grades/datatable.html:11
+#: shared/templates/schools/datatable.html:11
+#: shared/templates/schools/detail.html:22
+msgid "SSL Coordinators"
+msgstr ""
+
+#: shared/templates/grades/list.html:4
+#, fuzzy
+#| msgid "Grade"
+msgid "Grades"
+msgstr "Grado"
+
+#: shared/templates/grades/list.html:9 shared/templates/schools/list.html:9
+msgid "Montgomery County Public Schools"
+msgstr "Escuelas públicas del condado de Montgomery"
+
+#: shared/templates/help.html:4
+#: shared/templates/includes/base_navigation.html:51
+#: shared/templates/schools/list.html:4
+#: shared/templates/servicehours/list.html:4
+#: shared/templates/users/impersonate_list.html:4
+msgid "Schools"
+msgstr "Escuelas"
+
+#: shared/templates/help.html:9
+#: shared/templates/includes/base_navigation.html:77
+msgid "Help"
+msgstr "Ayuda"
+
+#: shared/templates/home.html:7
+msgid "Welcome to <i class='far fa-clock'></i>SSLHours!"
+msgstr "¡Bienvenido a <i class='far fa-clock'></i>SSLHours!"
+
+#: shared/templates/home.html:16
+#: shared/templates/includes/base_navigation.html:31
+#: shared/templates/students/avatars.html:5
+#: shared/templates/students/claim.html:9
+#: shared/templates/students/list.html:4 shared/templates/students/list.html:9
+msgid "Students"
+msgstr "Estudiantes"
+
+#: shared/templates/home.html:16 shared/templates/home.html:54
+#: shared/templates/home.html:82 shared/templates/home.html:117
+#: shared/templates/home.html:145 shared/templates/home.html:173
+#: shared/templates/students/cv.html:44
+msgid "Leaderboard"
+msgstr ""
+
+#: shared/templates/home.html:26 shared/templates/home.html:58
+#: shared/templates/home.html:86 shared/templates/home.html:121
+#: shared/templates/home.html:149 shared/templates/home.html:177
+#, fuzzy
+#| msgid "Schools"
+msgid "Schoolyear"
+msgstr "Escuelas"
+
+#: shared/templates/home.html:39 shared/templates/home.html:69
+#: shared/templates/home.html:97 shared/templates/home.html:132
+#: shared/templates/home.html:160 shared/templates/home.html:189
+msgid "All-time"
+msgstr ""
+
+#: shared/templates/home.html:54
+#, fuzzy
+#| msgid "Schools"
+msgid "Middle Schools"
+msgstr "Escuelas"
+
+#: shared/templates/home.html:82
+#, fuzzy
+#| msgid "Schools"
+msgid "High Schools"
+msgstr "Escuelas"
+
+#: shared/templates/home.html:117
+#: shared/templates/includes/base_navigation.html:47
+#: shared/templates/teams/list.html:4 shared/templates/teams/list.html:9
+msgid "Teams"
+msgstr "Equipos"
+
+#: shared/templates/home.html:173
+#: shared/templates/includes/base_navigation.html:39
+#: shared/templates/organizations/list.html:4
+#: shared/templates/organizations/list.html:9
+msgid "Organizations"
+msgstr "Organizaciones"
+
+#: shared/templates/includes/base_navigation.html:35
+msgid "Service Hours"
+msgstr ""
+
+#: shared/templates/includes/base_navigation.html:72
+#, fuzzy
+#| msgid "Profile"
+msgid "Student Profile"
+msgstr "Perfil"
+
+#: shared/templates/includes/base_navigation.html:74
+#, fuzzy
+#| msgid "Profile"
+msgid "User Profile"
+msgstr "Perfil"
+
+#: shared/templates/includes/base_navigation.html:75
+#: shared/templates/students/claim.html:4
+msgid "Claim your MCPS Student ID"
+msgstr ""
+
+#: shared/templates/includes/base_navigation.html:78
+msgid "Privacy"
+msgstr ""
+
+#: shared/templates/includes/base_navigation.html:81
+msgid "Log out"
+msgstr "Cerrar sesión"
+
+#: shared/templates/includes/base_navigation.html:87
+msgid "Log in"
+msgstr "Iniciar sesión"
+
+#: shared/templates/includes/detail_badge.html:19
+msgid "credited Service Hours"
+msgstr ""
+
+#: shared/templates/organizations/detail.html:4
+#: shared/templates/servicehours/datatable.html:10
+#: shared/templates/servicehours/detail.html:22
+#: shared/templates/teams/detail.html:4 shared/templates/teams/detail.html:9
+#, fuzzy
+#| msgid "Teams"
+msgid "Team"
+msgstr "Equipos"
+
+#: shared/templates/organizations/detail.html:17
+msgid "EIN"
+msgstr ""
+
+#: shared/templates/organizations/detail.html:18
+#: shared/templates/schools/detail.html:21
+msgid "Phone"
+msgstr "Teléfono"
+
+#: shared/templates/organizations/detail.html:19
+#: shared/templates/users/detail.html:18
+msgid "Email"
+msgstr ""
+
+#: shared/templates/organizations/detail.html:20
+#: shared/templates/schools/detail.html:18
+msgid "Address"
+msgstr ""
+
+#: shared/templates/organizations/detail.html:38
+#, fuzzy
+#| msgid "Activities"
+msgid "Activities sponsored by"
+msgstr "Ocupaciones"
+
+#: shared/templates/privacy.html:4
+msgid "Privacy Policy"
+msgstr ""
+
+#: shared/templates/privacy.html:10
+msgid "SSLHours Privacy Policy"
+msgstr ""
+
+#: shared/templates/privacy.html:15 shared/templates/privacy.html:21
+msgid "Logging Data"
+msgstr ""
+
+#: shared/templates/schools/detail.html:4
+#: shared/templates/schools/detail.html:9
+#: shared/templates/servicehours/datatable.html:9
+#: shared/templates/servicehours/detail.html:21
+#: shared/templates/students/datatable.html:13
+#, fuzzy
+#| msgid "Schools"
+msgid "School"
+msgstr "Escuelas"
+
+#: shared/templates/schools/detail.html:19
+msgid "City"
+msgstr "Ciudad"
+
+#: shared/templates/schools/detail.html:20
+msgid "Zip"
+msgstr ""
+
+#: shared/templates/servicehours/datatable.html:7
+#: shared/templates/servicehours/detail.html:18
+#: shared/templates/students/cv.html:6 shared/templates/students/edit.html:4
+#, fuzzy
+#| msgid "Students"
+msgid "Student"
+msgstr "Estudiantes"
+
+#: shared/templates/servicehours/datatable.html:11
+msgid "Date"
+msgstr ""
+
+#: shared/templates/servicehours/datatable.html:12
+#: shared/templates/servicehours/detail.html:25
+msgid "Total"
+msgstr "Total"
+
+#: shared/templates/servicehours/detail.html:9
+msgid "Servicehour"
+msgstr ""
+
+#: shared/templates/servicehours/detail.html:11
+msgid "Edit"
+msgstr ""
+
+#: shared/templates/servicehours/detail.html:23
+msgid "Start Time"
+msgstr "Hora de inicio"
+
+#: shared/templates/servicehours/detail.html:24
+msgid "End Time"
+msgstr "Hora de finalización"
+
+#: shared/templates/servicehours/detail.html:28
+msgid "Crediting SSL Coordinator"
+msgstr ""
+
+#: shared/templates/servicehours/detail.html:31
+msgid "Reflections"
+msgstr "Reflexiones"
+
+#: shared/templates/servicehours/edit.html:9
+#, fuzzy
+#| msgid "Reflections"
+msgid "Service Hour: Reflections"
+msgstr "Reflexiones"
+
+#: shared/templates/servicehours/list.html:9
+msgid "Student Service Learning Hours"
+msgstr ""
+
+#: shared/templates/students/avatars.html:10
+msgid "Select an avatar"
+msgstr ""
+
+#: shared/templates/students/claim.html:14
+msgid ""
+"\n"
+"\t\t\t\t<p>\n"
+"\t\t\t\t\tIf you are a student, you will need to associate your account with you MCPS ID.\n"
+"\t\t\t\t</p>\n"
+"\t\t\t\t<p>\n"
+"\t\t\t\t\tYou can only do this once, so if you make a mistake or intentionally enter another student's ID, any service hours will just be rejected, and both your and the other student's accounts will be locked until the matter is resolved by contacting support below.\n"
+"\t\t\t\t</p>\n"
+"\t\t\t"
+msgstr ""
+
+#: shared/templates/students/claim.html:25
+#, fuzzy
+#| msgid "Claim my ID"
+msgid "Claim ID!"
+msgstr "Reclama mi MCPS identificación"
+
+#: shared/templates/students/cv.html:13
+msgid "Public profile for: "
+msgstr ""
+
+#: shared/templates/students/cv.html:25
+msgid "Service Hours credited"
+msgstr ""
+
+#: shared/templates/students/cv.html:26
+msgid "Service Hours pending"
+msgstr ""
+
+#: shared/templates/students/cv.html:41
+msgid "Date Snapped"
+msgstr ""
+
+#: shared/templates/students/cv.html:43
+msgid "Out of"
+msgstr ""
+
+#: shared/templates/students/datatable.html:12
+msgid "Grade"
+msgstr "Grado"
+
+#: shared/templates/students/edit.html:11
+msgid "Manage your profile"
+msgstr ""
+
+#: shared/templates/students/edit.html:18
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\t\t\tThe information below is needed only if you want SSLHours.com to be able to generate the <a href=\"%(URL_TO_OFFICIAL_SSL_PDF)s\">MCPS SSL Form 560-51</a> for you to print to give to your school's SSL coordinator, or to skip the form altogether, and have your school's SSL Coordinator verify and credit your hours here.\n"
+"\t\t\t\t\t\t"
+msgstr ""
+
+#: shared/templates/students/edit.html:23
+msgid ""
+"\n"
+"\t\t\t\t\t\t\tIf you only want forms generated with your hours, school and grade, then feel free to leave the other fields blank.\n"
+"\t\t\t\t\t\t"
+msgstr ""
+
+#: shared/templates/teams/detail.html:26
+msgid "SSL Hours completed"
+msgstr ""
+
+#: shared/templates/users/detail.html:11
+msgid "Hi"
+msgstr "Hola"
+
+#: shared/templates/users/detail.html:16
+msgid "First Name"
+msgstr "Nombre de pila"
+
+#: shared/templates/users/detail.html:17
+msgid "Last Name"
+msgstr "Apellido"
+
+#: shared/templates/users/detail.html:19
+msgid "Date joined"
+msgstr ""
+
+#: shared/templates/users/detail.html:21
+msgid "Activities you manage:"
+msgstr ""
+
+#: shared/templates/users/detail.html:30
+#, fuzzy
+#| msgid "Organizations"
+msgid "Organizations you manage:"
+msgstr "Organizaciones"
+
+#: shared/templates/users/detail.html:39
+msgid "Schools for which you are an SSL Coordinator:"
+msgstr ""
+
+#: sslhours/settings.py:214
+msgid "English"
+msgstr "Inglés"
+
+#: sslhours/settings.py:215
+msgid "Spanish"
+msgstr "Español"
+
+#: sslhours/settings.py:216
+msgid "Hungarian"
+msgstr "Húngaro"
+
+#~ msgid "Check in!"
+#~ msgstr "¡Registrarse!"
+
+#~ msgid "Welcome to SSLHours!"
+#~ msgstr "¡Bienvenido a SSLHours!"
+
+#, fuzzy
+#~ msgid "Manage"
+#~ msgstr "Gerente"
+
+#~ msgid "This account is associated with the following MCPS student"
+#~ msgstr "Esta cuenta está asociada con el siguiente estudiante de MCPS"
+
+#~ msgid "How to demo this site..."
+#~ msgstr "Cómo hacer una demostración de este sitio..."
+
+#~ msgid "Events"
+#~ msgstr "Eventos"

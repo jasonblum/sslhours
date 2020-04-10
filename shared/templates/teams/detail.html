@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Team" %}: {{ team }}{% endblock title %}
+
+{% block content %} 
+	<div class="card">
+		<div class="card-header">
+			<span class="display-5">{% trans 'Team' %}: {{ team.hyperlinked_name }}</span>
+			<i class="fas fa-bullhorn fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-sm">
+					<p class="card-text">
+						<ul>
+							<li>{% trans 'Description' %}: {{ team.description }}</li>
+						</ul>
+					</p>
+				</div>
+				{% include 'includes/detail_badge.html' with object=team %}
+			</div>
+		</div>
+		<hr/>
+		<div class="card-body">
+			<h4>{% trans 'SSL Hours completed' %}:</h4>
+			{% include 'servicehours/datatable.html' with servicehours=team.servicehours.all %}
+		</div>
+	</div>
+{% endblock content %}

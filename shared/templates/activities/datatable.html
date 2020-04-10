@@ -1,0 +1,35 @@
+{% load i18n %}
+{% load sslhours %}
+
+<p/>
+<table id="datatable_id" class="display datatable">
+    <thead>
+        <tr>
+            <th>{% trans 'Position' %}</th>
+            <th>{% trans 'Name' %}</th>
+            <th>{% trans 'SSL Credited' %}</th>
+            <th>{% trans 'Organization' %}</th>
+            <th>{% trans 'Manager' %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    	{% for activity in activities %}
+	        <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>
+                    {{ activity.hyperlinked_name }}
+                    {{ forloop.counter|leaderboard_position_html }}
+                    {% if activity in user.student.activities %}
+                        <a href="{% url 'students:snapshot' 'activities' %}">
+                            <i class="fas fa-camera fa-2x float-right"></i>
+                        </a>
+                    {% endif %}
+                </td>
+	            <td>{{ activity.total_servicehours }}</td>
+	            <td>{{ activity.organization.hyperlinked_name }}</td>
+	            <td>{{ activity.manager.hyperlinked_name }}</td>
+	        </tr>
+	    {% endfor %}
+    </tbody>
+</table>
+

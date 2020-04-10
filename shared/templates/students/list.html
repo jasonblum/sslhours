@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Students" %}{% endblock title %}
+
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<span class="display-4">{% trans 'Students' %}</span>
+			<i class="fas fa-graduation-cap fa-4x text-dark float-right"></i>
+		</div>
+		<div class="card-body">
+
+			{% include 'students/datatable.html' with students=students %}
+
+		</div>
+	</div>
+{% endblock content %}
