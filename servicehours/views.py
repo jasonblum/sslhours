@@ -65,7 +65,7 @@ def list_servicehours(request):
 
 def detail(request, pk):
 	servicehour = get_object_or_404(ServiceHour, pk=pk)
-	return render(request, 'servicehours/detail.html', {'servicehour':servicehour, 'can_manage': request.user in servicehour.users_who_can_manage})
+	return render(request, 'servicehours/detail.html', {'servicehour':servicehour})
 
 
 

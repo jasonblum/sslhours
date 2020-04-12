@@ -83,7 +83,6 @@ INSTALLED_APPS = [
     'activities.apps.ActivitiesConfig',
     'shared.apps.SharedConfig',
     'teams.apps.TeamsConfig',
-    'features.apps.FeaturesConfig',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -246,7 +245,7 @@ ADMINS = (
 
 # DEBUG TOOLBAR
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
-if DEBUG and not TESTING:
+if not DEBUG and not TESTING:
     MIDDLEWARE += [
         'debug_toolbar.middleware.DebugToolbarMiddleware',
     ]

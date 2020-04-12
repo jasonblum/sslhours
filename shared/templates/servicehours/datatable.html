@@ -33,7 +33,7 @@
                     {% endif %}
                 </td>
                 <td>
-                    {% if request.user in servicehour.users_who_can_manage %}
+                    {% if user in servicehour.users_who_can_manage %}
                         <a href="{% url 'servicehours:detail' servicehour.pk %}">
                             {{ servicehour.status|status_html }}
                         </a>

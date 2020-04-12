@@ -6,7 +6,7 @@ from .models import Student
 class StudentForm(forms.ModelForm):
 	class Meta:
 		model = Student
-		exclude = ('is_active', 'mcps_id', 'avatar', )
+		exclude = ('is_active', 'mcps_id', 'avatar', '_beginning_total_servicehour_balance', )
 
 
 

@@ -17,7 +17,6 @@ from schools.models import School
 from servicehours.models import ServiceHour
 from students.models import Student
 from teams.models import Team
-from features.models import Feature
 
 
 User = get_user_model()
@@ -200,6 +199,7 @@ class Command(BaseCommand):
 			start_time = start_time,
 			end_time = start_time + timedelta(minutes=137),
 			crediting_SSL_coordinator = coordinator,
+			reflections = fake.paragraph(nb_sentences=5),
 			student = student1,
 			activity = activity1,
 			school = student1.school,
@@ -213,6 +213,7 @@ class Command(BaseCommand):
 			start_time = start_time,
 			end_time = start_time + timedelta(minutes=126),
 			crediting_SSL_coordinator = coordinator,
+			reflections = fake.paragraph(nb_sentences=5),
 			student = student1,
 			activity = activity1,
 			school = student1.school,
@@ -263,7 +264,7 @@ class Command(BaseCommand):
 			student = random.choice(students)
 			start_time = fake.date_time_this_month(before_now=True, after_now=False, tzinfo=timezone.get_current_timezone())
 			co = coordinator if bool(random.getrandbits(1)) else None
-			reflections = 'My reflection text...' if co else 'My reflection text...' if bool(random.getrandbits(1)) else None
+			reflections = fake.paragraph(nb_sentences=5) if co else fake.paragraph(nb_sentences=5) if bool(random.getrandbits(1)) else None
 
 			servicehour = ServiceHour.objects.create(
 				start_time = start_time,
@@ -282,24 +283,6 @@ class Command(BaseCommand):
 
 
 
-
-
-
-		feature1 = Feature.objects.create(
-			name = 'Login with Gmail',
-			discussion = 'Instead of having to remember my password on SSLHours.com, can I just log in with my Gmail account?',
-			status = 'completed',
-			outcome = 'Done - you can log in with your google account.'
-		)
-		feature2 = Feature.objects.create(
-			name = 'Login with Instagram',
-			discussion = 'Instead of having to remember my password on SSLHours.com, can I just log in with my Instagram account?'
-		)
-		feature3 = Feature.objects.create(
-			name = 'Links to share leaderboard position certificates on college applications',
-			discussion = 'I\'d like to be able to save a snapshot of my position on one more leaderboards and present it as a "certificate" I can share with colleges.  This certificate should have a short URL an admissions officer can click on to see my standing, review hours I\'ve worked and even read my reflections text...' 
-		)
-		print('features created')
 
 
 

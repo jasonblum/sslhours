@@ -24,6 +24,12 @@
 							If you only want forms generated with your hours, school and grade, then feel free to leave the other fields blank.
 						{% endblocktrans %}
 					</p>
+					<p class="card-text">
+						{% blocktrans %}
+							Only your username and service hours are visible on your public profile:
+						{% endblocktrans %}
+						<h1><a href="http://sslhours.com{{ student.get_absolute_url }}">http://sslhours.com{{ student.get_absolute_url }}</a></h1>
+					</p>				
 				</div>
 				{% include 'includes/detail_badge.html' with object=student %}
 			</div>

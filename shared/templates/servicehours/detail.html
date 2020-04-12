@@ -9,6 +9,8 @@
 			<span class="display-5">{% trans 'Servicehour' %}</span>
 			{% if can_manage and servicehour.status != 'credited' %}
 				<a href="{% url 'servicehours:edit' servicehour.pk %}" class="btn btn-outline-success btn-lg float-right" >{% trans 'Edit' %}</a>
+			{% else %}
+				<i class="fas fa-clock fa-4x text-dark float-right"></i>
 			{% endif %}
 		</div>
 		<div class="card-body">
@@ -25,20 +27,22 @@
 					<li>{% trans 'Total' %}: {{ servicehour.total }}</li>
 					<li>
 						{% trans 'Status' %}: {{ servicehour.status|status_html }}
-						{% if servicehour.status == 'incomplete' %}
-							{% trans '(Needs Reflections text.)' %}
-						{% endif %}
 					</li>
 					{% if servicehour.crediting_SSL_coordinator and servicehour.status != 'credited' %}
 						<li>{% trans 'Crediting SSL Coordinator' %}: {{ hour.crediting_SSL_coordinator.hyperlinked_name }}</li>
 					{% endif %}
-				{% if can_manage %}
-					<li>{% trans 'Reflections' %}: 
-						<div class="card">
-							<div class="card-body">
-								{{ servicehour.reflections }}
+				{% if user in servicehour.users_who_can_manage %}
+					<li>
+						{% trans 'Reflections' %}: 
+						{% if servicehour.reflects %}
+							<div class="card">
+								<div class="card-body">
+									{{ servicehour.reflections }}
+								</div>
 							</div>
-						</div>
+						{% else %}
+							{% trans 'Needed' %} 
+						{% endif %}
 					</li>
 					{% if servicehour.comments.exists %}
 						<li>Comments:
@@ -50,6 +54,11 @@
 						</li>
 					{% endif %}
 				{% endif %}
+					<li>
+	                    <a href="{% url 'servicehours:pdf' servicehour.pk %}" target="_blank">
+	                        <i class="far fa-file-pdf fa-2x"></i>
+	                    </a>											
+					</li>
 				</ul>
 			</div>
 		</div>

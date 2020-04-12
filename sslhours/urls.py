@@ -32,7 +32,6 @@ urlpatterns = [
 	path('activities/', include('activities.urls')),
 	path('servicehours/', include('servicehours.urls')),
 	path('teams/', include('teams.urls')),
-	path('features/', include('features.urls')),
 
 	path('rosetta/', include('rosetta.urls')),
 	path('i18n/', include('django.conf.urls.i18n')),
@@ -49,12 +48,11 @@ if settings.DEBUG:
         path('__debug__/', include(debug_toolbar.urls)),
     ]
 
+
 handler400 = 'shared.views.handler400'
 handler403 = 'shared.views.handler403'
 handler404 = 'shared.views.handler404'
 handler500 = 'shared.views.handler500'
-
-
 
 admin.site.site_header = f'{settings.SITE_NAME}'
 admin.site.site_title = f'{settings.SITE_NAME}'

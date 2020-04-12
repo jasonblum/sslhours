@@ -37,7 +37,7 @@ def home(request):
 	<button type="button" class="highlight btn btn-outline-success btn-sm">{teams.count()}</button> teams of
 	<button type="button" class="highlight btn btn-outline-danger btn-sm">{students.count()}</button> students from 
 	<button type="button" class="highlight btn btn-outline-warning btn-sm">{high_schools.count()+middle_schools.count()}</button> schools have completed
-	<button type="button" class="highlight btn btn-outline-info btn-sm">{servicehour_count}</button> service hours in
+	<button type="button" class="highlight btn btn-outline-info btn-sm">{servicehour_count}</button> <a href="https://www.montgomeryschoolsmd.org/departments/ssl/">Student Service Learning</a> hours in
 	<button type="button" class="highlight btn btn-outline-primary btn-sm">{activities.count()}</button> activities for
 	<button type="button" class="highlight btn btn-outline-dark btn-sm">{organizations.count()}</button> organizations
 	to date!''')

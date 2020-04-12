@@ -108,7 +108,7 @@
 			                    {% endif %}
 			                </td>
 			                <td>
-			                    {% if not servicehour.status == 'credited' and request.user in servicehour.users_who_can_manage %}
+			                    {% if not servicehour.status == 'credited' and user in servicehour.users_who_can_manage %}
 			                        <a href="{% url 'servicehours:edit' servicehour.pk %}">
 			                            {{ servicehour.status|status_html }}
 			                        </a>
