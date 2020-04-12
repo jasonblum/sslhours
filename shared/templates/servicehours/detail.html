@@ -7,7 +7,7 @@
 	<div class="card">
 		<div class="card-header">
 			<span class="display-5">{% trans 'Servicehour' %}</span>
-			{% if can_manage and servicehour.status != 'credited' %}
+			{% if user in servicehour.users_who_can_manage and servicehour.status != 'credited' %}
 				<a href="{% url 'servicehours:edit' servicehour.pk %}" class="btn btn-outline-success btn-lg float-right" >{% trans 'Edit' %}</a>
 			{% else %}
 				<i class="fas fa-clock fa-4x text-dark float-right"></i>
@@ -24,7 +24,7 @@
 					<li>{% trans 'Team' %}: {{ servicehour.team.hyperlinked_name }}</li>
 					<li>{% trans 'Start Time' %}: {{ servicehour.start_time }}</li>
 					<li>{% trans 'End Time' %}: {{ servicehour.end_time }}</li>
-					<li>{% trans 'Total' %}: {{ servicehour.total }}</li>
+					<li>{% trans 'Total hours' %}: {{ servicehour.total }}</li>
 					<li>
 						{% trans 'Status' %}: {{ servicehour.status|status_html }}
 					</li>
@@ -55,6 +55,7 @@
 					{% endif %}
 				{% endif %}
 					<li>
+						Print pdf for this service:
 	                    <a href="{% url 'servicehours:pdf' servicehour.pk %}" target="_blank">
 	                        <i class="far fa-file-pdf fa-2x"></i>
 	                    </a>											

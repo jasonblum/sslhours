@@ -11,15 +11,21 @@
             <th>{% trans 'Date'%}</th>
             <th>{% trans 'Total'%}</th>
             <th>{% trans 'Status'%}</th>
-            <th></th>
+            <th>{% trans 'Form'%}</th>
         </tr>
     </thead>
     <tbody>
     	{% for servicehour in servicehours %}
 	        <tr>
                 <td>
+                    <a href="{{ servicehour.student.get_absolute_url }}" 
+                    data-toggle="popover" 
+                    data-trigger="hover" 
+                    title="Student's reflections on this service:" 
+                    data-content="{{ servicehour.reflections}}">
                     <img src="{% static 'shared/images/avatars' %}/{{ servicehour.student.avatar }}" width="25" class="rounded-circle">
                     {{ servicehour.student.hyperlinked_name }}
+                    </a>
                 </td>
                 <td>{{ servicehour.activity.hyperlinked_name }}</td>
                 <td>{{ servicehour.school.hyperlinked_name }}</td>
@@ -52,6 +58,7 @@
 	    {% endfor %}
     </tbody>
 </table>
+
 
 
 {% addtoblock "js" %}
