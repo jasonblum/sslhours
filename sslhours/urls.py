@@ -37,7 +37,7 @@ urlpatterns = [
 	path('rosetta/', include('rosetta.urls')),
 	path('i18n/', include('django.conf.urls.i18n')),
 
-    path('video/', RedirectView.as_view(url='https://www.dropbox.com/s/9y1yrffrjq7s3yz/SSLHours.mov')),
+    path('video/', RedirectView.as_view(url='https://www.dropbox.com/s/9y1yrffrjq7s3yz/SSLHours.mov'), name='video'),
 	
 	path('sentry-debug/', trigger_error),
 
