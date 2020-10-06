@@ -18,7 +18,7 @@ django-sekizai==1.1.0
 django-stronghold==0.4.0
 Faker==4.0.2
 idna==2.9
-model-bakery==1.1.0
+model-bakery==1.2.0
 more-itertools==8.2.0
 oauthlib==3.1.0
 packaging==20.3
