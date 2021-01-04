@@ -11,7 +11,7 @@ django-crispy-forms==1.9.0
 django-debug-toolbar==2.2
 django-environ==0.4.5
 django-extensions==2.2.9
-django-impersonate==1.5
+django-impersonate==1.7.2
 django-mail-templated==2.6.5
 django-rosetta==0.9.4
 django-sekizai==1.1.0
