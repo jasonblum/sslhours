@@ -2,7 +2,7 @@ asgiref==3.2.7
 attrs==19.3.0
 certifi==2020.4.5.1
 chardet==3.0.4
-defusedxml==0.6.0
+defusedxml==0.7.0
 Django==3.0.5
 django-allauth==0.41.0
 django-anymail==7.0.0
