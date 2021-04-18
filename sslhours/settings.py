@@ -244,8 +244,7 @@ ADMINS = (
 )
 
 # DEBUG TOOLBAR
-TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
-if not DEBUG and not TESTING:
+if DEBUG:
     MIDDLEWARE += [
         'debug_toolbar.middleware.DebugToolbarMiddleware',
     ]
