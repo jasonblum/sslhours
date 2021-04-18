@@ -282,6 +282,7 @@ STRONGHOLD_PUBLIC_NAMED_URLS = (
     'account_signup',
     'google_login',
     'google_callback',
+    'video',
 )
 
 
