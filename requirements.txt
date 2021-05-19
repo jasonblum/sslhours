@@ -5,7 +5,7 @@ chardet==4.0.0
 defusedxml==0.7.1
 Django==3.2
 django-allauth==0.44.0
-django-anymail==8.2
+django-anymail==8.3
 django-classy-tags==2.0.0
 django-crispy-forms==1.11.2
 django-debug-toolbar==3.2.1
